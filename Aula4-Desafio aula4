@@ -1,0 +1,66 @@
+DESAFIO AULA 4
+
+docker run -d --name desafio-aula4 -p 8081:80 nginx:alpine
+Unable to find image 'nginx:alpine' locally
+alpine: Pulling from library/nginx
+55afa1ecc21d: Pull complete 
+7c95cc9bf7aa: Pull complete 
+cfc08d7798ef: Pull complete 
+ff72fbf3f580: Pull complete 
+c73463be665b: Pull complete 
+c40008edd350: Pull complete 
+edd6b88cb27d: Pull complete 
+251741e0fff4: Pull complete 
+Digest: sha256:c8497b180665e631ec92a5091125bec5b214f0e2b99409e30653a125b37557da
+Status: Downloaded newer image for nginx:alpine
+29374cb973415abf805bd3b72944715e704fd7f6ee6b376be19711c63406fe54
+root@ubuntu:~$ docker ps
+CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS                                     NAMES
+29374cb97341   nginx:alpine   "/docker-entrypoint.…"   15 seconds ago   Up 14 seconds   0.0.0.0:8081->80/tcp, [::]:8081->80/tcp   desafio-aula4
+root@ubuntu:~$ curl localhost:8081
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, nginx is successfully installed and working.
+Further configuration is required for the web server, reverse proxy, 
+API gateway, load balancer, content cache, or other features.</p>
+
+<p>For online documentation and support please refer to
+<a href="https://nginx.org/">nginx.org</a>.<br/>
+To engage with the community please visit
+<a href="https://community.nginx.org/">community.nginx.org</a>.<br/>
+For enterprise grade support, professional services, additional 
+security features and capabilities please refer to
+<a href="https://f5.com/nginx">f5.com/nginx</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+root@ubuntu:~$ docker stop desafio-aula4
+desafio-aula4
+root@ubuntu:~$ docker rm desafio-aula4
+desafio-aula4
+root@ubuntu:~$ 
+
+PERGUNTAS
+
+1. Qual é a principal diferença entre uma máquina virtual e um contêiner?
+Uma máquina virtual possui um sistema operacional completo virtualizado.
+Já o contêiner compartilha o kernel do sistema operacional do computador, sendo mais leve e rápido. Por isso, contêineres consomem menos recursos.
+
+2. Qual é a diferença entre uma imagem Docker e um contêiner?
+A imagem Docker é um modelo pronto, contendo os arquivos e configurações necessários para executar uma aplicação.
+O contêiner é uma instância dessa imagem em execução. Podemos criar vários contêineres a partir da mesma imagem.
+
+3. Por que contêineres são interessantes em ambientes de nuvem?
+Porque são leves, rápidos para iniciar e facilitam a implantação de aplicações.
+Eles também ajudam a manter o mesmo ambiente entre desenvolvimento e produção. Além disso, permitem escalar aplicações com mais facilidade.
